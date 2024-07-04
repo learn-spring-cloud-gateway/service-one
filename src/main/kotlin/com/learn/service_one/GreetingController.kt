@@ -6,10 +6,19 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/first")
 class GreetingController {
-    @GetMapping
+    @GetMapping("/hello")
     fun greeting(@RequestParam(value = "name", defaultValue = "World") name: String) : String {
         return "hello $name, from Service 1"
+    }
+
+    @GetMapping
+    fun getStudent(): List<Student> {
+        println("getting students")
+        return listOf(
+            Student(1, "Ross", "Student"),
+            Student(2, "Rachel", "Student")
+        )
     }
 }
